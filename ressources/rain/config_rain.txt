@@ -17,6 +17,8 @@ mp3-BG-Remix10s.mp3
 mp3-HamsterDanceSong-18s.mp3
 mp3-Oignon-35s.mp3
 mp3-PoireauSong-16s.mp3
+mp3-RickRoll-19s.mp3
+mp3-SaxGuy-20s.mp3
 
 rain-Lion-Coin.png
 rain-Tw_abo-T1.png

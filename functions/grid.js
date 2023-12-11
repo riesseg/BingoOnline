@@ -1,7 +1,7 @@
-import { readFileAndReturnArray} from "./function.js";
+import { readFileAndReturnArray, geneRdmNbs} from "./function.js";
 import { gridsFolder,configGridsFile, standardGridFile, standardGridName } from "./path.js";
 
-var bingoLines = [
+export const bingoLines = [
   [0,1,2,3,4],
   [5,6,7,8,9],
   [10,11,12,13,14],
@@ -56,14 +56,15 @@ export async function getRandomJoker(){
   listJokers.sort(() => Math.random() - 0.5);
   return listJokers[0];
 }
-export async function setGrid(fileUrl) {
+export async function setGrid(fileUrl, obstacle) {
   var grille = await readFileAndReturnArray(fileUrl);
   grille = await getRandomSubset(grille);
   grille.forEach(setTuile);
+  putObstacles(obstacle);
 }
 
 function setTuile(item, index, arr) {
-  $(".tuile-"+ index).text(item)
+  $(".t-"+ index).text(item)
 };
 
 async function getRandomSubset(array) {
@@ -109,16 +110,30 @@ export async function loadGridsChoice(selected) {
   });
 }
 
-export function isBingo() {
+export function isBingo(thisBingoLine) {
   var bool = false;
-  $.each( bingoLines, function( key, line ) {
+  let keyToRemove =-99;
+  $.each( thisBingoLine, function( key, line ) {
       if(line.every(isSelected)) {
-        line.forEach((item, index, arr) => $("#c"+ item).addClass('bingo'));
+        keyToRemove = key;
+        line.forEach((item) => $("#c"+ item).addClass('bingo'));
         bool = true;
-      }  
+      }        
    });
-   return bool;  
+  if (keyToRemove != -99){
+       thisBingoLine.splice(keyToRemove, 1);
+  }
+
+  return [bool, thisBingoLine];  
 }; 
 function isSelected(index) {
-    return $("#c"+ index).hasClass("selected")
+    return $("#t"+ index).hasClass("selected")
+}
+
+function putObstacles(nbObs)
+{
+  let idTuiles = geneRdmNbs(nbObs);
+  idTuiles.forEach(
+      (item) => $("#t"+item).addClass('obstacle')
+    );
 }
