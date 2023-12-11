@@ -1,13 +1,15 @@
 import { resetGrid, setTransparencyMode, setVolume, changeAlign,convertBool, revertCheck } from "./function.js";
-import { setGrid, loadGridsChoice, isBingo, getRandomJoker  } from "./grid.js";
+import { setGrid, loadGridsChoice, isBingo, getRandomJoker,bingoLines  } from "./grid.js";
 import { itsBingo, continueBingo, resetBingoAnim, GetRandomImgBingo, isRotate} from "./rain.js";
 import { gridsFolder, gridsImgJokerFolder, standardGridFile, bingoImgFolder } from "./path.js";
 
 var selectedGrid = standardGridFile;
 var transparencyTrigger = false;
+var feverTrigger = false;
 var selectedVolume = 80;
 var selectedAlign = "center";
 var obstacle = 0;
+var thisBingoLine = bingoLines;
 
 export function hello() {
     console.log('hello!');
@@ -19,6 +21,8 @@ $(document).ready(async function() {
     if ( Cookies.get('transparencyTrigger') != undefined) {transparencyTrigger = convertBool(Cookies.get('transparencyTrigger'));}
     if ( Cookies.get('inputSound') != undefined) {selectedVolume = Cookies.get('inputSound');}
     if ( Cookies.get('obstacle') != undefined) {obstacle = Cookies.get('obstacle');}
+    if ( Cookies.get('feverTrigger') != undefined) {feverTrigger = convertBool(Cookies.get('feverTrigger'));}
+
 
     var imgJoker  = await  getRandomJoker();
     var imgBingo  = await  GetRandomImgBingo();
@@ -29,6 +33,7 @@ $(document).ready(async function() {
     $("#selectAlign").val(selectedAlign);
     $("#inputSound").val(selectedVolume);
     $('#switchTransparence').prop('checked', transparencyTrigger);
+    $('#switchFever').prop('checked', feverTrigger);
     $("#setObstacle .text").text(obstacle);
 
     loadGridsChoice(selectedGrid);
@@ -45,11 +50,12 @@ $(document).ready(async function() {
 $(".tuile").on('click', function(){
     if (! $(this).hasClass('obstacle') ) 
     {
-        console.log("grr"+$(this).hasClass('obstacle'));
         $(this).toggleClass('selected');
     }   
-    if (isBingo()){
-        itsBingo();
+    let resultBingo = isBingo(thisBingoLine);
+    thisBingoLine = resultBingo[1];
+    if (resultBingo[0]){
+        itsBingo(feverTrigger);
     }
 });
 
@@ -78,10 +84,15 @@ $('#inputSound').on('input', function () {
     Cookies.set("inputSound",$(this).val(), { expires: 7, sameSite: 'strict'  });
 });
 
-$('.switchTrsp').on('click', function () {
+$('#toggleTransparence .switch').on('click', function () {
     revertCheck("#switchTransparence");
     setTransparencyMode($("#switchTransparence").is(':checked'));
     Cookies.set("transparencyTrigger",$("#switchTransparence").is(':checked'), { expires: 7, sameSite: 'strict' });
+});
+$('#toggleFever .switch').on('click', function () {
+    revertCheck("#switchFever");
+    feverTrigger = $("#switchFever").is(':checked');
+    Cookies.set("feverTrigger", feverTrigger, { expires: 7, sameSite: 'strict' });
 });
 
 $("#setObstacle .text").on('click', function () {

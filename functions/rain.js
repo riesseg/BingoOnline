@@ -62,7 +62,8 @@ export async function randomMp3()
     return listMp3[rngArray];
 }
 
-export async function itsBingo() {
+export async function itsBingo(feverTrigger) {
+  console.log("fever : "+feverTrigger)
   if(!hasAnimationBeenTriggered) 
   {
     hasAnimationBeenTriggered = true;
@@ -77,6 +78,17 @@ export async function itsBingo() {
       clearInterval(interval);
   }, 20000);
   }
+  else
+  {
+    if(feverTrigger)
+    {
+      var songMp3 = await randomMp3();
+      audioMp3.attr("src", rainMp3Folder+songMp3);
+      audio.load();
+      audio.play();
+    }
+  }
+  
 }
 
 async function makeItRain() {

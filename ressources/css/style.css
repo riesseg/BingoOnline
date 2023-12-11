@@ -214,13 +214,13 @@ body {
 #menuToggle .relative {
   position:relative;
 }
-#switchTransparence {
+#switchTransparence, #switchFever {
   visibility: hidden;
   position: absolute;
   height: 0;
   width: 0;
 }
-.switchTrsp {
+.switch {
   position: absolute;
   right: 0px;
   top: 0.5rem;
@@ -230,7 +230,7 @@ body {
   border-radius: 20px;
   cursor: pointer;
 }
-.switchTrsp:after {
+.switch:after {
   content: "";
   position: absolute;
   top: 5px;
@@ -242,10 +242,12 @@ body {
   transition: 0.5s;
 
 }
-#switchTransparence:checked ~ .switchTrsp {
+#switchTransparence:checked ~ .switch,
+#switchFever:checked ~ .switch {
   background: var(--toggle-valid-color);
 }
-#switchTransparence:checked ~ .switchTrsp:after{
+#switchTransparence:checked ~ .switch:after,
+#switchFever:checked ~ .switch:after{
   transform: translateX(20px);
   background: var(--toggle-cursor-color);
 } 

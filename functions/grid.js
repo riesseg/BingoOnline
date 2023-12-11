@@ -1,7 +1,7 @@
 import { readFileAndReturnArray, geneRdmNbs} from "./function.js";
 import { gridsFolder,configGridsFile, standardGridFile, standardGridName } from "./path.js";
 
-var bingoLines = [
+export const bingoLines = [
   [0,1,2,3,4],
   [5,6,7,8,9],
   [10,11,12,13,14],
@@ -110,15 +110,21 @@ export async function loadGridsChoice(selected) {
   });
 }
 
-export function isBingo() {
+export function isBingo(thisBingoLine) {
   var bool = false;
-  $.each( bingoLines, function( key, line ) {
+  let keyToRemove =-99;
+  $.each( thisBingoLine, function( key, line ) {
       if(line.every(isSelected)) {
-        line.forEach((item, index, arr) => $("#c"+ item).addClass('bingo'));
+        keyToRemove = key;
+        line.forEach((item) => $("#c"+ item).addClass('bingo'));
         bool = true;
-      }  
+      }        
    });
-   return bool;  
+  if (keyToRemove != -99){
+       thisBingoLine.splice(keyToRemove, 1);
+  }
+
+  return [bool, thisBingoLine];  
 }; 
 function isSelected(index) {
     return $("#t"+ index).hasClass("selected")
