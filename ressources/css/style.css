@@ -11,6 +11,11 @@
     --tuile-text-border-color: #000000;
     --tuile-border-color: #000000;
     --tuile-bingo-border-color: #ffffff;
+    --obstacle-bg-color: #a8a498;
+    --obstacle-border-color: #ffffff;
+    --obstacle-text-color: #a8a498;
+    --highlight-01: #C57DFF;
+    --highlight-02: #7DDCFF;
     --highlight-01: #e36f4f;
     --highlight-02: #a1e94f;
     --bingo-popup-bg-color: rgba(255,255,255,0.8);
@@ -19,6 +24,9 @@
     --menu-cross-color: #232323;
     --menu-bg-color: #ededed;
     --menu-cedit-color: #afafaf;
+    --menu-difficulty-text-color: black;
+    --menu-difficulty-bg-color: white;
+    --menu-difficulty-border-color: black; 
     --button-bg-color: #ffffff;
     --toggle-bg-color: gray;
     --toggle-cursor-color: white;
@@ -93,8 +101,22 @@ body {
     background: no-repeat center var(--tuile-bg-color);
     background-size: 80% 80%;
 }
+.obstacle {
+    cursor: not-allowed;
+    background-color: var(--obstacle-bg-color);
+    border: 2px solid var(--obstacle-border-color);
+    color: var(--obstacle-text-color);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0px;
+    display: flex;
+    aspect-ratio: 1;
+}
 .tuile:hover {
     background-color: var(--tuile-hover-color);
+}
+.obstacle:hover {
+    background-color: var(--obstacle-bg-color);  
 }
 .tuile.selected {
     background-color: var(--tuile-sel-color);
@@ -195,13 +217,13 @@ body {
 #menuToggle .relative {
   position:relative;
 }
-#switchTransparence {
+#switchTransparence, #switchFever {
   visibility: hidden;
   position: absolute;
   height: 0;
   width: 0;
 }
-.switchTrsp {
+.switch {
   position: absolute;
   right: 0px;
   top: 0.5rem;
@@ -211,7 +233,7 @@ body {
   border-radius: 20px;
   cursor: pointer;
 }
-.switchTrsp:after {
+.switch:after {
   content: "";
   position: absolute;
   top: 5px;
@@ -223,13 +245,35 @@ body {
   transition: 0.5s;
 
 }
-#switchTransparence:checked ~ .switchTrsp {
+#switchTransparence:checked ~ .switch,
+#switchFever:checked ~ .switch {
   background: var(--toggle-valid-color);
 }
-#switchTransparence:checked ~ .switchTrsp:after{
+#switchTransparence:checked ~ .switch:after,
+#switchFever:checked ~ .switch:after{
   transform: translateX(20px);
   background: var(--toggle-cursor-color);
 } 
+
+#setObstacle {
+  position: absolute;
+  right: 0;
+  font-size: 15px;
+  top: 13px;
+}
+#setObstacle .text {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--menu-difficulty-text-color);
+  border: 1px solid var(--menu-difficulty-border-color);
+  background: var(--menu-difficulty-bg-color);
+  padding: 3px 10px;
+  border-radius: 3px;
+}
+#setObstacle .text:hover {
+    border-color: var(--highlight-01);
+}
 /****** Volume ******/
 #inputSound {
     position: absolute;

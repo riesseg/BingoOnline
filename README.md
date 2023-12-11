@@ -28,6 +28,18 @@ Le but étant de pas devoir forcément s'imposer une longue réflexion pour trou
 Il est possible d'avoir plusieurs grilles, que les utilisateurs peuvent choisir avant de générer le bingo.
 Une liste déroulante permet de sélectionner la grille active.
 
+## Difficulté
+
+Il est possible de paramétrer des obstacles aléatoires depuis le menu.
+On peut aller jusqu'à 5 obstacles (au dessus ça devient quasi impossible de faire un bingo).
+C'est juste pour plus de challenge
+
+## Bingo Forever
+
+Une fois qu'on a fait un Bingo, si l'option est activée, a chaque nouvelle ligne effectuée, une musique sera jouée et il y'aura des confetis.
+Mais il n'y aura pas la popup.
+Pour plus de fun. 
+
 ## Mode streamer
 
 Utile pour les streamer qui souhaitent utiliser le jeu dans le logiciel de live.
@@ -43,8 +55,6 @@ Le bingo se veut facilement adaptable. Pour se faire, il faut :
 - Editer les grilles, ou en ajouter dans le dossiers */grids/*
 - Modifier les images présentes dans le dossier */grids/img-joker/* pour modifier l'image de la case Joker
 - Modifier le fichier config_grids.txt qui se trouve dans */grids/* afin de renseigner les nouvelles grilles et images à utiliser.
-
-
 - Editer les emotes de la pluie dans le dossier */ressources/rain/img-rain/*
 - Editer les images qui s'affiche dans la popup Bingo a gauche et a droite du titre dans le dossier /ressources/rain/img/
 - Editer les fichiers mp3 qui se trouvent dans le dossier */ressources/rain/mp3/*

@@ -15,6 +15,8 @@
 #
 mp3-HamsterDanceSong-18s.mp3
 mp3-PoireauSong-16s.mp3
+mp3-RickRoll-19s.mp3
+mp3-SaxGuy-20s.mp3
 mp3-bird-machine-audio.mp3
 
 rain-confeti2.png
