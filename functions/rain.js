@@ -63,7 +63,6 @@ export async function randomMp3()
 }
 
 export async function itsBingo(feverTrigger) {
-  console.log("fever : "+feverTrigger)
   if(!hasAnimationBeenTriggered) 
   {
     hasAnimationBeenTriggered = true;
