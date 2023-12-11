@@ -27,12 +27,15 @@
                                 <!-- Options seront ajoutées dynamiquement par JavaScript -->
                             </select>
                         </li>
-                        <a href="#" id="newGrid"><li>Nouveau bingo</li></a>
+                        <li class="relative">
+                            <a href="#" id="newGrid">Nouveau bingo</a>
+                            <span id="setObstacle">Difficulté : <span class="text"></span></span>
+                        </li>
                         <li class="relative">
                             Mode Streamer : 
                             <div id="toggleTransparence">
                                 <input type="checkbox" id="switchTransparence" />
-                                <div class="switchTrsp"></div>
+                                <div class="switch"></div>
                             </div>
                         </li>
                         <li class="relative">
@@ -46,6 +49,13 @@
                         <li class="relative">Volume bingo :
                             <div class="slidecontainer">
                                 <input id="inputSound" type="range" min="0" max="100" value="80" step="25">
+                            </div>
+                        </li>
+                        <li  class="relative">
+                            Bingo Forever : 
+                            <div id="toggleFever">
+                                <input type="checkbox" id="switchFever" />
+                                <div class="switch"></div>
                             </div>
                         </li>
                         <div class="credit">
@@ -66,31 +76,31 @@
                     </div>
                 </div>
                 <div id = "grid">
-                    <div class="tuile" id="c0"><span class="tuile-0"></span></div>
-                    <div class="tuile" id="c1"><span class="tuile-1"></span></div>
-                    <div class="tuile" id="c2"><span class="tuile-2"></span></div>
-                    <div class="tuile" id="c3"><span class="tuile-3"></span></div>
-                    <div class="tuile" id="c4"><span class="tuile-4"></span></div>
-                    <div class="tuile" id="c5"><span class="tuile-5"></span></div>
-                    <div class="tuile" id="c6"><span class="tuile-6"></span></div>
-                    <div class="tuile" id="c7"><span class="tuile-7"></span></div>
-                    <div class="tuile" id="c8"><span class="tuile-8"></span></div>
-                    <div class="tuile" id="c9"><span class="tuile-9"></span></div>
-                    <div class="tuile" id="c10"><span class="tuile-10"></span></div>
-                    <div class="tuile" id="c11"><span class="tuile-11"></span></div>
-                    <div class="tuile joker" id="c12"><span class="tuile-12"><span>Joker</span></span></div>
-                    <div class="tuile" id="c13"><span class="tuile-13"></span></div>
-                    <div class="tuile" id="c14"><span class="tuile-14"></span></div>
-                    <div class="tuile" id="c15"><span class="tuile-15"></span></div>
-                    <div class="tuile" id="c16"><span class="tuile-16"></span></div>
-                    <div class="tuile" id="c17"><span class="tuile-17"></span></div>
-                    <div class="tuile" id="c18"><span class="tuile-18"></span></div>
-                    <div class="tuile" id="c19"><span class="tuile-19"></span></div>
-                    <div class="tuile" id="c20"><span class="tuile-20"></span></div>
-                    <div class="tuile" id="c21"><span class="tuile-21"></span></div>
-                    <div class="tuile" id="c22"><span class="tuile-22"></span></div>
-                    <div class="tuile" id="c23"><span class="tuile-23"></span></div>
-                    <div class="tuile" id="c24"><span class="tuile-24"></span></div>
+                    <div class="tuile" id="t0"><span class="t-0"></span></div>
+                    <div class="tuile" id="t1"><span class="t-1"></span></div>
+                    <div class="tuile" id="t2"><span class="t-2"></span></div>
+                    <div class="tuile" id="t3"><span class="t-3"></span></div>
+                    <div class="tuile" id="t4"><span class="t-4"></span></div>
+                    <div class="tuile" id="t5"><span class="t-5"></span></div>
+                    <div class="tuile" id="t6"><span class="t-6"></span></div>
+                    <div class="tuile" id="t7"><span class="t-7"></span></div>
+                    <div class="tuile" id="t8"><span class="t-8"></span></div>
+                    <div class="tuile" id="t9"><span class="t-9"></span></div>
+                    <div class="tuile" id="t10"><span class="t-10"></span></div>
+                    <div class="tuile" id="t11"><span class="t-11"></span></div>
+                    <div class="tuile joker" id="t12"><span class="t-12"><span>Joker</span></span></div>
+                    <div class="tuile" id="t13"><span class="t-13"></span></div>
+                    <div class="tuile" id="t14"><span class="t-14"></span></div>
+                    <div class="tuile" id="t15"><span class="t-15"></span></div>
+                    <div class="tuile" id="t16"><span class="t-16"></span></div>
+                    <div class="tuile" id="t17"><span class="t-17"></span></div>
+                    <div class="tuile" id="t18"><span class="t-18"></span></div>
+                    <div class="tuile" id="t19"><span class="t-19"></span></div>
+                    <div class="tuile" id="t20"><span class="t-20"></span></div>
+                    <div class="tuile" id="t21"><span class="t-21"></span></div>
+                    <div class="tuile" id="t22"><span class="t-22"></span></div>
+                    <div class="tuile" id="t23"><span class="t-23"></span></div>
+                    <div class="tuile" id="t24"><span class="t-24"></span></div>
                 </div>
             </div>
             <audio controls id="mp3Player" class="hidden">
