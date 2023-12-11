@@ -18,8 +18,9 @@ export async function readFileAndReturnArray(fileUrl) {
 export function resetGrid(){
   for(var i = 0; i<25; i++)
   {
-    $("#c"+i).removeClass("selected");
-    $("#c"+i).removeClass("bingo");
+    $("#t"+i).removeClass("selected");
+    $("#t"+i).removeClass("bingo");
+    $("#t"+i).removeClass("obstacle").addClass("tuile");
   }
 }
 
@@ -76,4 +77,17 @@ export function revertCheck(input) {
   {
     $(input).prop('checked', true);
   }
+}
+
+export function geneRdmNbs(nbRdm) {
+  var Nbs = [];
+  while (Nbs.length < nbRdm) 
+  {
+    var randomNumber = Math.floor(Math.random() * 25);
+    // Vérifier si le nombre n'est pas déjà dans le tableau, n'est pas égal à 12, et est unique
+    if (Nbs.indexOf(randomNumber) === -1 && randomNumber !== 12) {
+      Nbs.push(randomNumber);
+    }
+  }
+  return Nbs;
 }

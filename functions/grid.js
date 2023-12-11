@@ -1,4 +1,4 @@
-import { readFileAndReturnArray} from "./function.js";
+import { readFileAndReturnArray, geneRdmNbs} from "./function.js";
 import { gridsFolder,configGridsFile, standardGridFile, standardGridName } from "./path.js";
 
 var bingoLines = [
@@ -56,14 +56,15 @@ export async function getRandomJoker(){
   listJokers.sort(() => Math.random() - 0.5);
   return listJokers[0];
 }
-export async function setGrid(fileUrl) {
+export async function setGrid(fileUrl, obstacle) {
   var grille = await readFileAndReturnArray(fileUrl);
   grille = await getRandomSubset(grille);
   grille.forEach(setTuile);
+  putObstacles(obstacle);
 }
 
 function setTuile(item, index, arr) {
-  $(".tuile-"+ index).text(item)
+  $(".t-"+ index).text(item)
 };
 
 async function getRandomSubset(array) {
@@ -120,5 +121,13 @@ export function isBingo() {
    return bool;  
 }; 
 function isSelected(index) {
-    return $("#c"+ index).hasClass("selected")
+    return $("#t"+ index).hasClass("selected")
+}
+
+function putObstacles(nbObs)
+{
+  let idTuiles = geneRdmNbs(nbObs);
+  idTuiles.forEach(
+      (item) => $("#t"+item).addClass('obstacle')
+    );
 }
