@@ -76,7 +76,7 @@ export async function itsBingo(feverTrigger) {
     makeItRain();
     setTimeout(function(){
       clearInterval(interval);
-  }, 20000);
+    }, 20000);
   }
   else
   {
@@ -86,6 +86,10 @@ export async function itsBingo(feverTrigger) {
       audioMp3.attr("src", rainMp3Folder+songMp3);
       audio.load();
       audio.play();
+      makeItRain();
+      setTimeout(function(){
+        clearInterval(interval);
+      }, 15000);
     }
   }
   
